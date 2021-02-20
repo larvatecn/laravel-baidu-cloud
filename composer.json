@@ -1,0 +1,43 @@
+{
+    "name": "larva/laravel-baidu-cloud",
+    "description": "This is a Laravel expansion for the Baidu Cloud.",
+    "keywords": [
+        "Larva",
+        "laravel",
+        "cloud",
+        "baidu"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "ext-simplexml": "*",
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "illuminate/http": "^7.0 || ^8.0",
+        "illuminate/support": "^7.0 || ^8.0",
+        "illuminate/bus": "^7.0 || ^8.0",
+        "illuminate/queue": "^7.0 || ^8.0",
+        "guzzlehttp/guzzle": "^6.5 || ^7.2",
+        "larva/support": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Larva\\Baidu\\Cloud\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Larva\\Baidu\\Cloud\\BaiduCloudServiceProvider"
+            ],
+            "aliases": {
+                "Bce": "Larva\\Baidu\\Cloud\\BaiduCloud"
+            }
+        }
+    },
+    "prefer-stable": true
+}
