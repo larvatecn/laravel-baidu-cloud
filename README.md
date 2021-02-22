@@ -2,9 +2,9 @@
 
 This is a baidu cloud expansion for the laravel
 
-[![License](https://poser.pugx.org/larva/laravel-bce/license.svg)](https://packagist.org/packages/larva/laravel-bce)
-[![Latest Stable Version](https://poser.pugx.org/larva/laravel-bce/v/stable.png)](https://packagist.org/packages/larva/laravel-bce)
-[![Total Downloads](https://poser.pugx.org/larva/laravel-bce/downloads.png)](https://packagist.org/packages/larva/laravel-bce)
+[![License](https://poser.pugx.org/larva/laravel-baidu-cloud/license.svg)](https://packagist.org/packages/larva/laravel-baidu-cloud)
+[![Latest Stable Version](https://poser.pugx.org/larva/laravel-baidu-cloud/v/stable.png)](https://packagist.org/packages/larva/laravel-baidu-cloud)
+[![Total Downloads](https://poser.pugx.org/larva/laravel-baidu-cloud/downloads.png)](https://packagist.org/packages/larva/laravel-baidu-cloud)
 
 ## 接口支持
 - CDN
