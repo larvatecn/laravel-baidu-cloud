@@ -8,7 +8,6 @@
 
 namespace Larva\Baidu\Cloud\Services;
 
-use GuzzleHttp\HandlerStack;
 use Illuminate\Support\Str;
 use Larva\Baidu\Cloud\BaseClient;
 use Larva\Baidu\Cloud\HttpStack;
@@ -43,6 +42,7 @@ class Sms extends BaseClient
      * @param string|null $custom
      * @param string|null $userExtId
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function send($mobile, $template, $signatureId, array $contentVar, $custom = null, $userExtId = null)
     {
@@ -61,6 +61,7 @@ class Sms extends BaseClient
      * @param string|null $signatureFileBase64 签名的证明文件经过base64编码后的字符串
      * @param string|null $signatureFileFormat 签名证明文件的格式
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function signatureApply($content, $contentType = 'DOMESTIC', $description = null, $countryType = null, $signatureFileBase64 = null, $signatureFileFormat = null)
     {
@@ -81,6 +82,7 @@ class Sms extends BaseClient
      * @param string|null $signatureFileBase64 签名的证明文件经过base64编码后的字符串
      * @param string|null $signatureFileFormat 签名证明文件的格式
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function changeSignatureApply($signatureId, $content, $contentType = 'DOMESTIC', $description = null, $signatureFileBase64 = null, $signatureFileFormat = null)
     {
@@ -95,6 +97,7 @@ class Sms extends BaseClient
      * 获取签名
      * @param string $signatureId
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getSignatureApply($signatureId)
     {
@@ -105,6 +108,7 @@ class Sms extends BaseClient
      * 删除签名
      * @param string $signatureId
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteSignatureApply($signatureId)
     {
@@ -120,6 +124,7 @@ class Sms extends BaseClient
      * @param string $countryType
      * @param string $description
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function template($name, $content, $smsType, $countryType, $description)
     {
@@ -136,6 +141,7 @@ class Sms extends BaseClient
      * @param string $countryType
      * @param string|null $description
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function changeTemplate($templateId, $name, $content, $smsType, $countryType, $description = null)
     {
@@ -148,6 +154,7 @@ class Sms extends BaseClient
      * 获取模板
      * @param string $templateId
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function getTemplate($templateId)
     {
@@ -158,6 +165,7 @@ class Sms extends BaseClient
      * 删除模板
      * @param string $templateId
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function deleteTemplate($templateId)
     {
@@ -168,6 +176,7 @@ class Sms extends BaseClient
     /**
      * 查配额
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function quota()
     {
@@ -178,6 +187,7 @@ class Sms extends BaseClient
      * 变更配额
      * @param array $params
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function changeQuota($params)
     {

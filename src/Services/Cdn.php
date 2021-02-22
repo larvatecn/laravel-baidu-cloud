@@ -8,7 +8,6 @@
 
 namespace Larva\Baidu\Cloud\Services;
 
-use GuzzleHttp\HandlerStack;
 use Larva\Baidu\Cloud\BaseClient;
 use Larva\Baidu\Cloud\HttpStack;
 
