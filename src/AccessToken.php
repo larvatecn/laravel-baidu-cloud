@@ -9,8 +9,7 @@
 namespace Larva\Baidu\Cloud;
 
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
-use Larva\Support\Json;
+use Larva\Support\HttpClient;
 
 /**
  * Class AccessToken
@@ -114,10 +113,11 @@ class AccessToken
      * 请求 AccessToken
      * @param array $credentials
      * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function requestToken(array $credentials): array
     {
-        $response = Http::post($this->endpointToGetToken, $credentials);
+        $response = HttpClient::make()->post($this->endpointToGetToken, $credentials);
         return $response->json();
     }
 }

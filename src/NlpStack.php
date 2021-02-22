@@ -16,24 +16,32 @@ use Psr\Http\Message\RequestInterface;
  */
 class NlpStack
 {
-    /** @var array Configuration settings */
-    private $config = [
-        'appid' => '',
-        'apiKey' => '',
-        'secretKey' => ''
-    ];
+    /**
+     * @var string
+     */
+    protected $appId;
+
+    /**
+     * @var string
+     */
+    protected $appKey;
+
+    /**
+     * @var string
+     */
+    protected $secretKey;
 
     /**
      * Constructor.
-     * @param array $config
+     * @param string $appId
+     * @param string $appKey
+     * @param string $secretKey
      */
-    public function __construct($config)
+    public function __construct(string $appId, string $appKey, string $secretKey)
     {
-        if (!empty($config)) {
-            foreach ($config as $key => $value) {
-                $this->config[$key] = $value;
-            }
-        }
+        $this->appId = $appId;
+        $this->appKey = $appKey;
+        $this->secretKey = $secretKey;
     }
 
     /**
@@ -59,7 +67,7 @@ class NlpStack
     private function onBefore(RequestInterface $request)
     {
         $params = \GuzzleHttp\Psr7\Query::parse($request->getUri()->getQuery());
-        $params['access_token'] =$this->getAccessToken();
+        $params['access_token'] = $this->getAccessToken();
         $params['charset'] = 'UTF-8';
         $body = http_build_query($params, '', '&');
         return \GuzzleHttp\Psr7\Utils::modifyRequest($request, ['query' => $body]);
@@ -71,7 +79,7 @@ class NlpStack
      */
     private function getAccessToken(): string
     {
-        $accessToken = new \Larva\Baidu\Cloud\AccessToken($this->config['appid'], $this->config['apiKey'], $this->config['secretKey']);
+        $accessToken = new AccessToken($this->appId, $this->appKey, $this->secretKey);
         $token = $accessToken->getToken();
         return $token['access_token'];
     }
