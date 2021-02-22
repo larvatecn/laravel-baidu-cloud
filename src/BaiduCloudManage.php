@@ -62,7 +62,7 @@ class BaiduCloudManage extends Manager
      * 创建CDN服务
      * @return Services\Cdn
      */
-    public function createCdnService()
+    public function createCdnDriver()
     {
         $config = $this->getConfig('cdn');
         return new Services\Cdn(['accessId' => $config['access_id'], 'accessKey' => $config['access_key']]);
@@ -72,7 +72,7 @@ class BaiduCloudManage extends Manager
      * 创建 NLP 服务
      * @return Services\Nlp
      */
-    public function createNlpService()
+    public function createNlpDriver()
     {
         $config = $this->getConfig('nlp');
         return new Services\Nlp(['accessId' => $config['app_id'], 'accessKey' => $config['app_key'], 'secretKey' => $config['secret_key']]);
