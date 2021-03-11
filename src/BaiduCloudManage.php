@@ -25,7 +25,7 @@ class BaiduCloudManage extends Manager
      */
     protected function getConfig(string $name): array
     {
-        $config = $this->config["baidu.drivers.{$name}"] ?: [];
+        $config = $this->config["baidu.services.{$name}"] ?: [];
         if (!isset($config['access_id']) || empty ($config['access_id'])) {
             $config['access_id'] = $this->config["baidu.access_id"];
         }
