@@ -15,6 +15,42 @@ namespace Larva\Baidu\Cloud;
 class BaiduCloudHelper
 {
     /**
+     * 内容审核
+     * @param string $content
+     * @return array
+     */
+    public static function textModeration($content)
+    {
+        $response = \Larva\Baidu\Cloud\BaiduCloud::with('nlp')->textCensor($content);
+        $keyWords = [];
+        if ($response['conclusionType'] != 1 && isset($response['data'])) {//不合规
+            foreach ($response['data'] as $res) {
+                $hits = array_shift($res['hits']);
+                $keyWords = array_merge($keyWords, $hits['words']);
+            }
+        }
+        return $keyWords;
+    }
+
+    /**
+     * 图片审核
+     * @param string $path
+     * @param false $isRemote
+     * @return bool
+     */
+    public static function imageModeration($path, $isRemote = false)
+    {
+        if ($isRemote) {
+            $path = base64_encode(file_get_contents($path));
+        }
+        $response = \Larva\Baidu\Cloud\BaiduCloud::with('nlp')->imageCensor($path);
+        if ($response['conclusionType'] != 1 && isset($response['data'])) {//不合规
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * 抽取关键词
      * @param string $title
      * @param null|string $content
