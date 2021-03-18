@@ -12,7 +12,7 @@ use Illuminate\Support\Manager;
 use InvalidArgumentException;
 
 /**
- * Class BceManage
+ * Class BaiduCloudManage
  * @author Tongle Xu <xutongle@gmail.com>
  */
 class BaiduCloudManage extends Manager
@@ -41,7 +41,7 @@ class BaiduCloudManage extends Manager
      * @param string $driver
      * @return mixed
      */
-    public function with($driver)
+    public function with(string $driver)
     {
         return $this->driver($driver);
     }
@@ -55,7 +55,7 @@ class BaiduCloudManage extends Manager
      */
     public function getDefaultDriver()
     {
-        throw new InvalidArgumentException('No Tencent Cloud driver was specified.');
+        throw new InvalidArgumentException('No driver was specified.');
     }
 
     /**

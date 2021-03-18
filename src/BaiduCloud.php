@@ -11,8 +11,9 @@ namespace Larva\Baidu\Cloud;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Bce
+ * Class BaiduCloud
  * @mixin BaiduCloudManage
+ * @method BaiduCloudInterface with($driver)
  * @author Tongle Xu <xutongle@gmail.com>
  */
 class BaiduCloud extends Facade
@@ -22,8 +23,8 @@ class BaiduCloud extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        return 'baidu_cloud';
+        return 'baidu.cloud';
     }
 }

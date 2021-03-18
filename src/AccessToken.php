@@ -113,7 +113,7 @@ class AccessToken
      * 请求 AccessToken
      * @param array $credentials
      * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \GuzzleHttp\Exception\GuzzleException|\Larva\Support\Exception\ConnectionException
      */
     public function requestToken(array $credentials): array
     {

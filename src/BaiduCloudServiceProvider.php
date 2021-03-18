@@ -20,7 +20,7 @@ class BaiduCloudServiceProvider extends ServiceProvider
     {
         $this->setupConfig();
 
-        $this->app->singleton('baidu_cloud', function () {
+        $this->app->singleton('baidu.cloud', function () {
             return new BaiduCloudManage($this->app);
         });
     }
