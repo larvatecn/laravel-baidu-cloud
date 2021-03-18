@@ -21,7 +21,7 @@ class BaiduCloudHelper
      */
     public static function textModeration($content)
     {
-        $response = \Larva\Baidu\Cloud\BaiduCloud::with('nlp')->textCensor($content);
+        $response = \Larva\Baidu\Cloud\BaiduCloud::nlp()->textCensor($content);
         $keyWords = [];
         if ($response['conclusionType'] != 1 && isset($response['data'])) {//不合规
             foreach ($response['data'] as $res) {
@@ -43,7 +43,7 @@ class BaiduCloudHelper
         if ($isRemote) {
             $path = base64_encode(file_get_contents($path));
         }
-        $response = \Larva\Baidu\Cloud\BaiduCloud::with('nlp')->imageCensor($path);
+        $response = \Larva\Baidu\Cloud\BaiduCloud::nlp()->imageCensor($path);
         if ($response['conclusionType'] != 1 && isset($response['data'])) {//不合规
             return false;
         }
@@ -58,7 +58,7 @@ class BaiduCloudHelper
      */
     public static function keywordsExtraction($title, $content = null)
     {
-        return \Larva\Baidu\Cloud\BaiduCloud::with('nlp')->keywords($title, $content);
+        return \Larva\Baidu\Cloud\BaiduCloud::nlp()->keywords($title, $content);
     }
 
     /**
@@ -68,7 +68,7 @@ class BaiduCloudHelper
      */
     public static function keywordsExtraction2($text)
     {
-        $words = \Larva\Baidu\Cloud\BaiduCloud::with('nlp')->lexicalAnalysis($text);
+        $words = \Larva\Baidu\Cloud\BaiduCloud::nlp()->lexicalAnalysis($text);
         $keywords = [];
         if (isset($words['items']) && is_array($words['items'])) {
             foreach ($words['items'] as $item) {

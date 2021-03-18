@@ -70,14 +70,12 @@ class CdnOriginUpdateJob implements ShouldQueue
         $cacheKey = ":cdn:{$this->domain}:origin";
         if ($this->peer != Cache::get($cacheKey)) {
             Cache::forever($cacheKey, $this->peer);
-            /** @var Cdn $cdn */
-            $cdn = BaiduCloud::with('cdn');
             $origin = [
                 [
                     'peer' => $this->peer,
                 ]
             ];
-            $cdn->setDomainOrigin($this->domain, $origin);
+            BaiduCloud::cdn()->setDomainOrigin($this->domain, $origin);
         }
     }
 }

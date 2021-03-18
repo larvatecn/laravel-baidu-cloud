@@ -72,9 +72,7 @@ class CdnRefreshObjectCachesJob implements ShouldQueue
                     'type' => $this->objectType
                 ];
             }
-            /** @var Cdn $cdn */
-            $cdn = BaiduCloud::with('cdn');
-            $cdn->cachePurge($tasks);
+            BaiduCloud::cdn()->cachePurge($tasks);
         } catch (\Exception $exception) {
 
         }

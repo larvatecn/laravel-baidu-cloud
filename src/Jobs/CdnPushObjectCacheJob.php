@@ -71,9 +71,7 @@ class CdnPushObjectCacheJob implements ShouldQueue
                     'url' => $task,
                 ];
             }
-            /** @var Cdn $cdn */
-            $cdn = BaiduCloud::with('cdn');
-            $cdn->cachePrefetch($tasks);
+            BaiduCloud::cdn()->cachePrefetch($tasks);
         } catch (\Exception $exception) {
 
         }
